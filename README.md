@@ -9,7 +9,8 @@
 - use 
     ```zsh
     npm run start
-    //node server.js
-    node client.js
+    npm run test
     php publish.php
     ```
+- More
+ [http://killuachen.com/view/54](http://killuachen.com/view/54)
