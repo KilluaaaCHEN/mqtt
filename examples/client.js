@@ -1,5 +1,5 @@
 var mqtt = require('mqtt');
-var auth = require('./auth');
+var auth = require('../auth');
 
 process.stdout.write("请输入您的UID:");
 process.stdin.on('data', (input) => {

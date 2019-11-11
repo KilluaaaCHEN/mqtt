@@ -4,7 +4,7 @@
   "description": "nodejs mqtt server",
   "main": "auth.js",
   "scripts": {
-    "test": "node client.js",
+    "test": "node examples/client.js",
     "start": "node server.js"
   },
   "repository": {

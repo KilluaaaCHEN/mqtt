@@ -13,6 +13,13 @@ var mqtt_port = 1883;
 
 var settings = {
     port: mqtt_port,
+    maxInflightMessages: 10240, //设置单条消息的最大长度,超出后服务端会返回
+    //设置WebSocket参数
+    http: {
+        port: 1884,
+        bundle: true,
+        static: './'
+    },
     // backend:ascoltatore
 };
 
