@@ -8,7 +8,8 @@
 
 - use 
     ```zsh
-    node server.js
+    npm run start
+    //node server.js
     node client.js
     php publish.php
     ```
