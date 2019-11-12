@@ -11,17 +11,9 @@ var auth = require('./auth');
 
 var mqtt_port = 1883;
 
-var SECURE_KEY = __dirname + '/ssl/wechat.killuachen.com.key';
-var SECURE_CERT = __dirname + '/ssl/wechat.killuachen.com.crt';
-
 var settings = {
     port: mqtt_port,
     maxInflightMessages: 10240, //设置单条消息的最大长度,超出后服务端会返回
-    secure: {
-        port: 2883,
-        keyPath: SECURE_KEY,
-        certPath: SECURE_CERT,
-    },
     //设置WebSocket参数
     http: {
         port: 1884,
