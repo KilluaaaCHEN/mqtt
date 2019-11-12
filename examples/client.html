@@ -5,11 +5,11 @@
     <title>Mqtt Websockets</title>
     <script src="js/mqttws31.min.js" type="text/javascript"></script>
     <script type="text/javascript">
-        host = '127.0.0.1';
-        port = 1884;//WebSocket协议服务端口，如果是走HTTPS，设置443端口
+        host = 'wechat.killuachen.com';
+        port = 2883;//WebSocket协议服务端口，如果是走HTTPS，设置443端口
         topic = 'project1/room/666';//需要操作的Topic
-        useTLS = false;//是否走加密HTTPS，如果走HTTPS，设置为true
-        var reconnectTimeout = 100;//掉线重连时间
+        useTLS = true;//是否走加密HTTPS，如果走HTTPS，设置为true
+        var reconnectTimeout = 1000;//掉线重连时间
         var clientId = '1bc29b36f623ba82aaf6724fd3b16718';
         var username = 'websocket';
         var password = '2867667cd7b40272ba5f7a76bfb57bb7';

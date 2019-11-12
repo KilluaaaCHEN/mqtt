@@ -11,9 +11,17 @@ var auth = require('./auth');
 
 var mqtt_port = 1883;
 
+var SECURE_KEY = __dirname + '/ssl/wechat.killuachen.com.key';
+var SECURE_CERT = __dirname + '/ssl/wechat.killuachen.com.crt';
+
 var settings = {
     port: mqtt_port,
     maxInflightMessages: 10240, //设置单条消息的最大长度,超出后服务端会返回
+    secure: {
+        port: 2883,
+        keyPath: SECURE_KEY,
+        certPath: SECURE_CERT,
+    },
     //设置WebSocket参数
     http: {
         port: 1884,
@@ -26,18 +34,18 @@ var settings = {
 var server = new mosca.Server(settings);
 
 // 以下事件为回调事件,可忽略
-// server.on('clientConnected', function (client) {
-//     console.log('连接成功:', client.id);
-// });
-// server.on('subscribed', function (topic, client) {
-//     console.log('开始订阅:', client.id, topic);
-// });
-// server.on('unSubscribed', function (topic, client) {
-//     console.log('取消订阅:', client.id, topic);
-// });
-// server.on('clientDisConnected', function (client) {
-//     console.log('连接关闭:', client.id);
-// });
+server.on('clientConnected', function (client) {
+    console.log('连接成功:', client.id);
+});
+server.on('subscribed', function (topic, client) {
+    console.log('开始订阅:', client.id, topic);
+});
+server.on('unSubscribed', function (topic, client) {
+    console.log('取消订阅:', client.id, topic);
+});
+server.on('clientDisConnected', function (client) {
+    console.log('连接关闭:', client.id);
+});
 
 server.on('ready', function () {
     console.log('Mosca server is up and running...');
@@ -48,7 +56,7 @@ server.on('ready', function () {
     //开始认证MQTT
     server.authenticate = function (client, username, password, callback) {
         var authorized = (password != undefined && username != undefined && password.toString() === auth.sign(client.id, username));
-        // console.log('开始认证:', client.id, authorized ? '===> 认证成功' : '===> 认证失败');
+        console.log('开始认证:', client.id, authorized ? '===> 认证成功' : '===> 认证失败');
         callback(null, authorized);
     };
     // 发布授权
