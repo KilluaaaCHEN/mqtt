@@ -19,6 +19,6 @@
   "homepage": "https://github.com/KilluaChen/mqtt#readme",
   "dependencies": {
     "mosca": "^2.8.3",
-    "redis": "^2.8.0"
+    "redis": "^3.1.1"
   }
 }
